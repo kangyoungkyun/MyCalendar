@@ -12,6 +12,7 @@ class CalenderView: UIView,UICollectionViewDelegate,UICollectionViewDataSource,U
     //monthView에서 이전달 다음달 클릭했을 때 여기가 반응 한다. 델리게이트 ! 위임해줬기 때문에 !!
     func didChangeMonth(monthIndex: Int, year: Int) {
         print("CalenderView에서 반응")
+        print("켈린더 뷰에서 받았습니다. \(monthIndex) , \(year)")
     }
     
    

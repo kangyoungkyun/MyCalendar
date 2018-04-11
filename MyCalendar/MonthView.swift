@@ -52,6 +52,8 @@ class MonthView: UIView {
     @objc func btnLeftRightAction(sender: UIButton) {
         
         print("이전달 다음달 버튼이 눌렀습니다.")
+        //이거 해줘야 calendarView에서 반응 함!
+        delegate?.didChangeMonth(monthIndex: currentMonthIndex, year: currentYear)
     }
     
     
