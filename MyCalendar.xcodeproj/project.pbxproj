@@ -15,6 +15,8 @@
 		52CF0C81207DDCD1002B2BAD /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF0C80207DDCD1002B2BAD /* CalenderView.swift */; };
 		52CF0C83207DE179002B2BAD /* dateCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF0C82207DE179002B2BAD /* dateCVCell.swift */; };
 		52CF0C88207DE760002B2BAD /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 52CF0C87207DE760002B2BAD /* 1.png */; };
+		52CF0C8A207DEA58002B2BAD /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF0C89207DEA58002B2BAD /* MonthView.swift */; };
+		52CF0C8D207DEA79002B2BAD /* WeekdaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF0C8C207DEA79002B2BAD /* WeekdaysView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		52CF0C80207DDCD1002B2BAD /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
 		52CF0C82207DE179002B2BAD /* dateCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateCVCell.swift; sourceTree = "<group>"; };
 		52CF0C87207DE760002B2BAD /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		52CF0C89207DEA58002B2BAD /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
+		52CF0C8C207DEA79002B2BAD /* WeekdaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdaysView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				52CF0C84207DE6E1002B2BAD /* pic */,
 				52CF0C6C207DD8F9002B2BAD /* AppDelegate.swift */,
 				52CF0C7E207DDB7D002B2BAD /* CalendarController.swift */,
+				52CF0C89207DEA58002B2BAD /* MonthView.swift */,
+				52CF0C8C207DEA79002B2BAD /* WeekdaysView.swift */,
 				52CF0C80207DDCD1002B2BAD /* CalenderView.swift */,
 				52CF0C70207DD8F9002B2BAD /* Main.storyboard */,
 				52CF0C73207DD8F9002B2BAD /* Assets.xcassets */,
@@ -155,6 +161,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				52CF0C7F207DDB7D002B2BAD /* CalendarController.swift in Sources */,
+				52CF0C8D207DEA79002B2BAD /* WeekdaysView.swift in Sources */,
+				52CF0C8A207DEA58002B2BAD /* MonthView.swift in Sources */,
 				52CF0C6D207DD8F9002B2BAD /* AppDelegate.swift in Sources */,
 				52CF0C83207DE179002B2BAD /* dateCVCell.swift in Sources */,
 				52CF0C81207DDCD1002B2BAD /* CalenderView.swift in Sources */,
