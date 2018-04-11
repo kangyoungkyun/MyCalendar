@@ -16,13 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        //최상위 뷰 정해주기
         self.window = UIWindow(frame: UIScreen.main.bounds)
         if let window = self.window{
             window.backgroundColor = UIColor.white
-           
             let view = CalendarController()
             let nav = UINavigationController(rootViewController: view)
-            
             window.rootViewController = nav
             window.makeKeyAndVisible()
         }
