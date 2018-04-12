@@ -79,6 +79,15 @@ class CalenderView: UIView,UICollectionViewDelegate,UICollectionViewDataSource,U
     
     //초기화
     func initializeView(){
+        
+        print("initializeView 진입")
+        
+        currentMonthIndex = Calendar.current.component(.month, from: Date())
+        currentYear = Calendar.current.component(.year, from: Date())
+        todaysDate = Calendar.current.component(.day, from: Date())
+        
+        print(currentYear,currentMonthIndex,todaysDate)
+        
         myCollectionView.delegate = self
         myCollectionView.dataSource = self
         myCollectionView.register(dateCVCell.self, forCellWithReuseIdentifier: "Cell")
