@@ -154,9 +154,7 @@ class CalenderView: UIView,UICollectionViewDelegate,UICollectionViewDataSource,U
             }
             
         }
-        
 
-        
         return cell!
     }
     
@@ -174,6 +172,25 @@ class CalenderView: UIView,UICollectionViewDelegate,UICollectionViewDataSource,U
     //가로 마진
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 5.0
+    }
+    
+    
+    
+    //클릭 했을 때
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.backgroundColor = UIColor.blue
+        let lbl = cell?.subviews[1] as! UILabel
+        lbl.textColor = UIColor.white
+        print(currentMonthIndex,lbl.text!)
+    }
+    //클릭 취소했을 때
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.backgroundColor = UIColor.cyan
+        let lbl = cell?.subviews[1] as! UILabel
+        lbl.textColor = UIColor.black
+        print(currentMonthIndex,lbl.text!)
     }
     
     
