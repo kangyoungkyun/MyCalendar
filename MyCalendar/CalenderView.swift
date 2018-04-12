@@ -107,7 +107,7 @@ class CalenderView: UIView,UICollectionViewDelegate,UICollectionViewDataSource,U
     //가장 첫달의 1일이 무슨 요일인지 구하기
     func getFirstWeekDay() -> Int{
         print(("\(currentYear)-\(currentMonthIndex)-01"))
-        let day =  ("\(currentYear)-\(currentMonthIndex)-01".date?.firstDayOfTheMonth.weekday)!
+        let day =  ("\(currentYear)-5-01".date?.firstDayOfTheMonth.weekday)!
         print("첫째날은 무슨요일? \(day)")
         return day
     }
@@ -123,7 +123,16 @@ class CalenderView: UIView,UICollectionViewDelegate,UICollectionViewDataSource,U
     //셀 구성
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell=collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? dateCVCell
-
+        
+        //4월은 -1 임
+        if indexPath.item <= firstWeekDayOfMonth - 2{
+            cell?.isHidden = true
+        }else{
+            let calcDate = indexPath.row - firstWeekDayOfMonth+2
+            cell?.isHidden = false
+            cell?.lbl.text = "\(calcDate)"
+        }
+        
         return cell!
     }
     
