@@ -107,7 +107,7 @@ class CalenderView: UIView,UICollectionViewDelegate,UICollectionViewDataSource,U
     //가장 첫달의 1일이 무슨 요일인지 구하기
     func getFirstWeekDay() -> Int{
         print(("\(currentYear)-\(currentMonthIndex)-01"))
-        let day =  ("\(currentYear)-5-01".date?.firstDayOfTheMonth.weekday)!
+        let day =  ("\(currentYear)-\(currentMonthIndex)-01".date?.firstDayOfTheMonth.weekday)!
         print("첫째날은 무슨요일? \(day)")
         return day
     }
@@ -120,6 +120,12 @@ class CalenderView: UIView,UICollectionViewDelegate,UICollectionViewDataSource,U
         
         return numOfDaysInMonth[currentMonthIndex-1] + firstWeekDayOfMonth - 1
     }
+    
+    //오늘 날짜
+    let tmonth = Calendar.current.component(.month, from: Date())
+    let tyear = Calendar.current.component(.year, from: Date())
+    let tday = Calendar.current.component(.day, from: Date())
+    
     //셀 구성
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell=collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? dateCVCell
@@ -128,10 +134,28 @@ class CalenderView: UIView,UICollectionViewDelegate,UICollectionViewDataSource,U
         if indexPath.item <= firstWeekDayOfMonth - 2{
             cell?.isHidden = true
         }else{
+            //날짜 표시 해주기
             let calcDate = indexPath.row - firstWeekDayOfMonth+2
             cell?.isHidden = false
             cell?.lbl.text = "\(calcDate)"
+            
+            //오늘날짜 표시해주기
+            if(currentYear == self.tyear && currentMonthIndex == self.tmonth && self.tday == calcDate){
+                
+                cell?.backgroundColor = .lightGray
+            }
+            //오늘 이후의 날짜 비활성화
+            if calcDate > todaysDate && currentMonthIndex == presentMonthIndex || currentMonthIndex > presentMonthIndex || currentYear > presentYear{
+                cell?.isUserInteractionEnabled=false
+                cell?.lbl.textColor = UIColor.lightGray
+            } else {
+                cell?.isUserInteractionEnabled=true
+                cell?.lbl.textColor = UIColor.black
+            }
+            
         }
+        
+
         
         return cell!
     }
@@ -145,11 +169,11 @@ class CalenderView: UIView,UICollectionViewDelegate,UICollectionViewDataSource,U
     
     //위아래 마진
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10.0
+        return 5.0
     }
     //가로 마진
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 10.0
+        return 5.0
     }
     
     
