@@ -85,13 +85,34 @@ class CalenderView: UIView,UICollectionViewDelegate,UICollectionViewDataSource,U
         currentMonthIndex = Calendar.current.component(.month, from: Date())
         currentYear = Calendar.current.component(.year, from: Date())
         todaysDate = Calendar.current.component(.day, from: Date())
+        firstWeekDayOfMonth = getFirstWeekDay()
         
-        print(currentYear,currentMonthIndex,todaysDate)
+        
+        //윤년 처리
+        if currentMonthIndex == 2 && currentYear % 4 == 0{
+            numOfDaysInMonth[currentMonthIndex - 1] = 29
+        }
+        
+        
+        presentMonthIndex = currentMonthIndex
+        presentYear = currentYear
+        
+        print(currentYear,currentMonthIndex,todaysDate,firstWeekDayOfMonth)
         
         myCollectionView.delegate = self
         myCollectionView.dataSource = self
         myCollectionView.register(dateCVCell.self, forCellWithReuseIdentifier: "Cell")
     }
+    
+    //가장 첫달의 1일이 무슨 요일인지 구하기
+    func getFirstWeekDay() -> Int{
+        print(("\(currentYear)-\(currentMonthIndex)-01"))
+        let day =  ("\(currentYear)-\(currentMonthIndex)-01".date?.firstDayOfTheMonth.weekday)!
+        print("첫째날은 무슨요일? \(day)")
+        return day
+    }
+    
+    
     //셀 개수
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 30

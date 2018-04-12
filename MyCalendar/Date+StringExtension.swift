@@ -12,10 +12,12 @@ import UIKit
 extension Date{
     var weekday:Int{
         print("Date weekday 변수 리턴 값: \(Calendar.current.component(.weekday, from: self))")
+        print("\n")
         return Calendar.current.component(.weekday, from: self)
     }
     var firstDayOfTheMonth:Date{
         print("Date firstDayOfTheMonth 변수 리턴 값: \(Calendar.current.date(from: Calendar.current.dateComponents([.year,.month], from: self))!)")
+         print("\n")
         return Calendar.current.date(from: Calendar.current.dateComponents([.year,.month], from: self))!
     }
 }
@@ -31,6 +33,7 @@ extension String {
 
     var date: Date? {
          print("Date date 변수 리턴 값: \(String.dateFormatter.date(from: self))")
+         print("\n")
         return String.dateFormatter.date(from: self)
     }
 }
