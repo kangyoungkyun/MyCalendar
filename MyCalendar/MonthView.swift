@@ -5,10 +5,13 @@
 //  Created by MacBookPro on 2018. 4. 11..
 //  Copyright © 2018년 MacBookPro. All rights reserved.
 //
+//델리게이트 처리 (달 uiview클릭 하면, calender 에서 반응하게 만들기 )
+//달uiview에 프로토콜 구현, caldender 에서 달uiview 프로토콜 상속 + 해당 프로토콜 메소드 구현
+
 
 import UIKit
 
-
+//델리게이트 함수
 protocol MonthViewDelegate:class {
     func didChangeMonth(monthIndex: Int, year: Int)
 }

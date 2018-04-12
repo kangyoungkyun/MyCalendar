@@ -5,6 +5,9 @@
 //  Created by MacBookPro on 2018. 4. 11..
 //  Copyright © 2018년 MacBookPro. All rights reserved.
 //
+//델리게이트 처리 (달 uiview클릭 하면, calender 에서 반응하게 만들기 )
+//달uiview에 프로토콜 구현, caldender 에서 달uiview 프로토콜 상속 + 해당 프로토콜 메소드 구현
+
 
 import UIKit
 
@@ -65,7 +68,7 @@ class CalenderView: UIView,UICollectionViewDelegate,UICollectionViewDataSource,U
     }
     //셀 개수
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 30
     }
     //셀 구성
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -73,6 +76,23 @@ class CalenderView: UIView,UICollectionViewDelegate,UICollectionViewDataSource,U
 
         return cell!
     }
+    
+    //컬렉션뷰 셀 사이즈 조정
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width/7 - 8
+        let height: CGFloat = 40
+        return CGSize(width: width, height: height)
+    }
+    
+    //위아래 마진
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10.0
+    }
+    //가로 마진
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 10.0
+    }
+    
     
     //제약조건 설정
     func setupViews() {
