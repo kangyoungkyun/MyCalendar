@@ -18,6 +18,23 @@ class CalenderView: UIView,UICollectionViewDelegate,UICollectionViewDataSource,U
         print("켈린더 뷰에서 받았습니다. \(monthIndex) , \(year)")
     }
     
+    
+    //달력에 필요한 변수 설정
+    //각 달의 일수의 총 개수
+    var numOfDaysInMonth = [31, 28, 31, 30, 31, 30, 31,31,30,31,30,31]
+    //화면에 보여지는 달
+    var currentMonthIndex : Int = 0
+    //화면에 보여지는 년수
+    var currentYear : Int = 0
+    
+    //오늘
+    var presentMonthIndex = 0
+    var presentYear = 0
+    var todaysDate = 0
+    
+    
+    var firstWeekDayOfMonth = 0 // 일 ~ 토,  1 ~ 7
+    
    
     //날짜 day를 보여쥴 컬랙션 뷰 객체
     let myCollectionView : UICollectionView = {
