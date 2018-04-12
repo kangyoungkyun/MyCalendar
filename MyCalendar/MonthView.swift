@@ -51,14 +51,7 @@ class MonthView: UIView {
         return btn
     }()
     
-    //이전달 다음달
-    @objc func btnLeftRightAction(sender: UIButton) {
-        
-        print("이전달 다음달 버튼이 눌렀습니다.")
-        //이거 해줘야 calendarView에서 반응 함!
-        delegate?.didChangeMonth(monthIndex: currentMonthIndex, year: currentYear)
-    }
-    
+
     
     //달의 값을 가지고 있는 배열
     var monthsArr = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
@@ -72,9 +65,43 @@ class MonthView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.blue
+        // - 을 해줘야 위에 배열에 있는 값을 정확히 가져올 수 있다. 4월이면 -1 후 3. 위의 배열에 3번째 방이 4월 값이 들어가 있다.
+        currentMonthIndex = Calendar.current.component(.month, from: Date()) - 1
+        currentYear = Calendar.current.component(.year, from: Date())
+        
+        print("MonthView에서 currentYear, currentMonthIndex \(currentYear)  , \(currentMonthIndex)")
         setupViews()
     }
     
+    
+    //이전달 다음달
+    @objc func btnLeftRightAction(sender: UIButton) {
+        
+        print("이전달 다음달 버튼이 눌렀습니다.")
+        
+        //오른쪽 버튼을 눌렀을때
+        if sender == btnRight{
+            currentMonthIndex += 1
+            if currentMonthIndex > 11{
+                currentMonthIndex = 0
+                currentYear += 1
+            }
+            
+        //왼쪽 버튼을 눌렀을 때
+        }else{
+            currentMonthIndex -= 1
+            if currentMonthIndex < 0 {
+                currentMonthIndex = 11
+                currentYear -= 1
+            }
+            
+            
+        }
+        
+        lblName.text = "\(currentYear)년 \(monthsArr[currentMonthIndex])"
+        //이거 해줘야 calendarView에서 반응 함!
+        delegate?.didChangeMonth(monthIndex: currentMonthIndex, year: currentYear)
+    }
     
     func setupViews() {
         

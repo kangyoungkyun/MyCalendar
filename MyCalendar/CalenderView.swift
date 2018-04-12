@@ -14,8 +14,25 @@ import UIKit
 class CalenderView: UIView,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,MonthViewDelegate {
     //monthView에서 이전달 다음달 클릭했을 때 여기가 반응 한다. 델리게이트 ! 위임해줬기 때문에 !!
     func didChangeMonth(monthIndex: Int, year: Int) {
+        
+        currentMonthIndex = monthIndex + 1
+        currentYear = year
+        
+        
+        //윤년 계산
+        if monthIndex == 1 {
+            if currentYear % 4 == 0 {
+                numOfDaysInMonth[monthIndex] = 29
+            } else {
+                numOfDaysInMonth[monthIndex] = 28
+            }
+        }
+        //달의 첫번째 요일 구해주고 새로고침
+        firstWeekDayOfMonth=getFirstWeekDay()
+        myCollectionView.reloadData()
+        
         print("CalenderView에서 반응")
-        print("켈린더 뷰에서 받았습니다. \(monthIndex) , \(year)")
+        print("켈린더 뷰에서 받은 후 새로고침 완료. \(monthIndex + 1) , \(year)")
     }
     
     
