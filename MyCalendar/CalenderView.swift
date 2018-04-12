@@ -115,7 +115,10 @@ class CalenderView: UIView,UICollectionViewDelegate,UICollectionViewDataSource,U
     
     //셀 개수
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        
+        print(numOfDaysInMonth[currentMonthIndex-1] + firstWeekDayOfMonth - 1)
+        
+        return numOfDaysInMonth[currentMonthIndex-1] + firstWeekDayOfMonth - 1
     }
     //셀 구성
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
